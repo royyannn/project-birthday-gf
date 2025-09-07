@@ -1,0 +1,369 @@
+<BACKUP html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 18th Birthday Syintia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff5f7;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        #opening-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #ffccdd;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 1s ease-out;
+        }
+
+        #opening-page h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #d63384;
+            padding: 0 20px;
+        }
+
+        #start-button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            background-color: #d63384;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        #start-button:hover {
+            transform: scale(1.05);
+            background-color: #c22574;
+        }
+
+        #navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #ffccdd;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            display: none;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-item {
+            margin: 0 20px;
+            cursor: pointer;
+            font-weight: 500;
+            color: #d63384;
+            transition: color 0.3s;
+        }
+
+        .nav-item:hover {
+            color: #a51c6a;
+        }
+
+        #main-content {
+            display: none;
+            padding-top: 70px;
+        }
+
+        section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #home {
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #ffccdd;
+            margin-bottom: 30px;
+        }
+
+        #home h2 {
+            font-size: 2.5rem;
+            color: #d63384;
+            margin-bottom: 20px;
+        }
+
+        .subjudul {
+            margin-bottom: 50px;
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .subjudul h3 {
+            color: #d63384;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .subjudul-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .subjudul-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-right: 30px;
+            margin-bottom: 20px;
+        }
+
+        .subjudul p {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        #my-words, #my-apologies {
+            background-color: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 30px auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        #my-words h2, #my-apologies h2 {
+            color: #d63384;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .audio-control {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #toggle-music {
+            padding: 10px 20px;
+            background-color: #d63384;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            #opening-page h1 {
+                font-size: 1.8rem;
+            }
+            
+            #home h2 {
+                font-size: 2rem;
+            }
+            
+            .nav-item {
+                margin: 0 10px;
+                font-size: 0.9rem;
+            }
+            
+            .subjudul-content {
+                flex-direction: column;
+            }
+            
+            .subjudul-img {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Halaman pembuka dengan tombol -->
+    <div id="opening-page">
+        <h1>kalau udah siap klik tombol dibawah yaa bubb😉</h1>
+        <button id="start-button">gass yaa bubb😆</button>
+    </div>
+
+    <!-- Navbar fixed di atas -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="nav-item" data-target="home">Home</div>
+            <div class="nav-item" data-target="syinn">Syinn</div>
+            <div class="nav-item" data-target="my-words">My Words</div>
+            <div class="nav-item" data-target="my-apologies">My Apologies</div>
+        </div>
+    </nav>
+
+    <!-- Konten utama website -->
+    <div id="main-content">
+        <!-- Hero section dengan foto profil dan teks -->
+        <section id="home">
+            <img src="syintia_kecil2.jpg" alt="Foto Syintia" class="profile-img">
+            <h2>HAPPY 18th BIRTHDAY SYINTIA🥳🎉</h2>
+            
+            <!-- Tombol toggle musik -->
+            <div class="audio-control">
+                <button id="toggle-music">🔇 Musik OFF</button>
+            </div>
+        </section>
+        
+        <!-- Bagian Syinn dengan 10 subjudul -->
+        <section id="syinn">
+            <h2 style="text-align: center; color: #d63384; margin-bottom: 40px;">Syinn</h2>
+            
+            <!-- Subjudul 1 -->
+            <div class="subjudul">
+                <h3>Keindahanmu</h3>
+                <div class="subjudul-content">
+                    <img src="https://via.placeholder.com/200" alt="Gambar 1" class="subjudul-img">
+                    <p>Setiap kali melihatmu, dunia terasa lebih cerah. Senyummu mampu menerangi hari-hari paling kelamku.</p>
+                </div>
+            </div>
+            
+            <!-- Subjudul 2 -->
+            <div class="subjudul">
+                <h3>Kebaikan Hatimu</h3>
+                <div class="subjudul-content">
+                    <img src="https://via.placeholder.com/200" alt="Gambar 2" class="subjudul-img">
+                    <p>Kebaikan hatimu tidak hanya kepadaku, tetapi kepada semua orang di sekitar kamu. Itu yang membuatku jatuh cinta.</p>
+                </div>
+            </div>
+            
+            <!-- Tambahkan 8 subjudul lainnya di sini -->
+            
+        </section>
+
+        <!-- Bagian My Words dengan teks panjang -->
+        <section id="my-words">
+            <h2>My Words</h2>
+            <p>Sayangku Syintia,</p>
+            <p>Di hari ulang tahunmu yang ke-18 ini, aku ingin mengungkapkan betapa berartinya kamu bagiku. Sejak kamu masuk ke dalam hidupku, segala sesuatu menjadi lebih berarti.</p>
+            <p>Kamu adalah orang yang paling memahami aku, menerima kekuranganku, dan selalu mendukungku dalam segala hal. Setiap hari bersamamu adalah anugerah yang tidak ternilai.</p>
+            <p>Aku berjanji akan selalu ada untukmu, melalui suka dan duka, melalui semua tantangan yang mungkin kita hadapi bersama.</p>
+            <p>Selamat ulang tahun sayangku. Semoga di usia yang ke-18 ini, semua impian dan harapanmu dapat terwujud. Aku akan selalu mendukungmu dalam setiap langkah yang kamu ambil.</p>
+            <p>Dengan cinta,<br>Pasanganmu</p>
+        </section>
+
+        <!-- Bagian My Apologies dengan teks permintaan maaf -->
+        <section id="my-apologies">
+            <h2>My Apologies</h2>
+            <p>Sayang, aku juga ingin menggunakan kesempatan ini untuk meminta maaf.</p>
+            <p>Maafkan aku untuk semua waktu ketika aku tidak memahami perasaanmu, ketika aku egois, atau ketika aku tidak menjadi pasangan yang cukup baik untukmu.</p>
+            <p>Aku menyadari bahwa tidak ada hubungan yang sempurna, dan aku pun pasti pernah melakukan kesalahan yang mungkin telah menyakiti hatimu.</p>
+            <p>Aku berjanji akan terus belajar menjadi pribadi yang lebih baik, untuk kita dan untuk masa depan kita bersama.</p>
+            <p>Terima kasih telah selalu sabar menghadapi kekuranganku.</p>
+        </section>
+    </div>
+
+    <!-- Elemen audio untuk memutar lagu -->
+    <audio id="birthday-song" loop>
+        <source src="Terbuang_Dalam_Waktu-Barasuara.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+
+    <script>
+        // Mengambil elemen-elemen penting dari DOM
+        const openingPage = document.getElementById('opening-page');
+        const startButton = document.getElementById('start-button');
+        const navbar = document.getElementById('navbar');
+        const mainContent = document.getElementById('main-content');
+        const audio = document.getElementById('birthday-song');
+        const navItems = document.querySelectorAll('.nav-item');
+        const toggleBtn = document.getElementById('toggle-music');
+
+        // Variabel status musik
+        let isMusicPlaying = false;
+
+        // Fungsi untuk toggle musik (play/pause)
+        function toggleMusic() {
+            if (isMusicPlaying) {
+                audio.pause();
+                toggleBtn.textContent = "🔇 Musik OFF";
+            } else {
+                audio.play().catch(error => {
+                    console.log('Play error: ', error);
+                });
+                toggleBtn.textContent = "🔊 Musik ON";
+            }
+            isMusicPlaying = !isMusicPlaying;
+        }
+
+        // Event listener untuk tombol toggle
+        toggleBtn.addEventListener('click', toggleMusic);
+
+        // Pastikan audio looping
+        audio.loop = true;
+
+        // Fungsi untuk memulai website setelah tombol diklik
+        function startWebsite() {
+            // Menghilangkan halaman pembuka dengan efek fade out
+            openingPage.style.opacity = '0';
+            
+            // Menunda penampilan konten utama dan navbar sampai animasi selesai
+            setTimeout(() => {
+                openingPage.style.display = 'none';
+                navbar.style.display = 'block';
+                mainContent.style.display = 'block';
+                
+                // Memulai musik dan update status
+                audio.play().catch(error => {
+                    console.log('Autoplay error: ', error);
+                });
+                isMusicPlaying = true;
+                toggleBtn.textContent = "🔊 Musik ON";
+            }, 1000);
+        }
+
+        // Menambahkan event listener ke tombol start
+        startButton.addEventListener('click', startWebsite);
+
+        // Fungsi untuk scroll ke bagian yang sesuai ketika item navbar diklik
+        function scrollToSection(event) {
+            const targetId = event.target.getAttribute('data-target');
+            const targetSection = document.getElementById(targetId);
+            
+            if (targetSection) {
+                window.scrollTo({
+                    top: targetSection.offsetTop - 70, // Mengkompensasi navbar fixed
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Menambahkan event listener ke setiap item navbar
+        navItems.forEach(item => {
+            item.addEventListener('click', scrollToSection);
+        });
+    </script>
+</body>
+</html>
