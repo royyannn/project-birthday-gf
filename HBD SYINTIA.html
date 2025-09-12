@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 18th Birthday Syintia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff5f7;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Background Elements */
+        .background-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(#ffccdd 2px, transparent 2px),
+                radial-gradient(#d63384 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            opacity: 0.4;
+        }
+
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .floating-hearts::before,
+        .floating-hearts::after {
+            content: '❤';
+            position: absolute;
+            color: #ff6b6b;
+            font-size: 20px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-hearts::before {
+            top: 20%;
+            left: 20%;
+            animation-delay: 0s;
+        }
+
+        .floating-hearts::after {
+            top: 60%;
+            left: 70%;
+            animation-delay: 2s;
+        }
+
+        .birthday-text {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(214, 51, 132, 0.1) 10px,
+                    rgba(214, 51, 132, 0.1) 20px
+                );
+            font-size: 0;
+        }
+
+        .birthday-text::after {
+            content: 'HBD • 18 • SYINTIA • LOVE •';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 16px;
+            color: rgba(214, 51, 132, 0.1);
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .confetti::before,
+        .confetti::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            animation: confettiFall 10s linear infinite;
+        }
+
+        .confetti::before {
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .confetti::after {
+            left: 90%;
+            animation-delay: 5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(-100px) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        .floating-hearts span {
+            position: absolute;
+            color: #ff6b6b;
+            font-size: 16px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        /* Opening Page */
+        #opening-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #ffccdd;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 1s ease-out;
+        }
+
+        #opening-page h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #d63384;
+            padding: 0 20px;
+        }
+
+        #start-button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            background-color: #d63384;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        #start-button:hover {
+            transform: scale(1.05);
+            background-color: #c22574;
+        }
+
+        /* Navbar */
+        #navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #ffccdd;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            display: none;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-item {
+            margin: 0 20px;
+            cursor: pointer;
+            font-weight: 500;
+            color: #d63384;
+            transition: color 0.3s;
+        }
+
+        .nav-item:hover {
+            color: #a51c6a;
+        }
+
+        /* Main Content */
+        #main-content {
+            display: none;
+            padding-top: 70px;
+        }
+
+        section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #home {
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #ffccdd;
+            margin-bottom: 30px;
+        }
+
+        #home h2 {
+            font-size: 2.5rem;
+            color: #d63384;
+            margin-bottom: 20px;
+        }
+
+        /* Cake Styles */
+        .cake-container {
+            margin: 100px auto 30px auto;
+            max-width: 500px;
+            position: relative;
+            height: 320px;
+        }
+
+        .cake {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            margin: 0 auto;
+        }
+
+        .cake-base {
+            position: absolute;
+            bottom: 0;
+            width: 300px;
+            height: 100px;
+            background-color: #f9c7c7;
+            border-radius: 10px 10px 5px 5px;
+        }
+
+        .cake-middle {
+            position: absolute;
+            bottom: 100px;
+            left: 25px;
+            width: 250px;
+            height: 70px;
+            background-color: #ff9e9e;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .cake-top {
+            position: absolute;
+            bottom: 170px;
+            left: 50px;
+            width: 200px;
+            height: 50px;
+            background-color: #ff7b7b;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .candle {
+            position: absolute;
+            bottom: 220px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 40px;
+            background-color: #fff;
+            z-index: 10;
+        }
+
+        .flame {
+            position: absolute;
+            bottom: 260px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 15px;
+            height: 25px;
+            background-color: #ffaa33;
+            border-radius: 50% 50% 20% 20%;
+            animation: flicker 1s infinite alternate;
+            box-shadow: 0 0 15px #ffaa33;
+        }
+
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scale(1); }
+            100% { transform: translateX(-50%) scale(1.1); }
+        }
+
+        .decoration {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: #ffccdd;
+        }
+
+        .decoration:nth-child(1) { bottom: 90px; left: 20px; }
+        .decoration:nth-child(2) { bottom: 90px; right: 20px; }
+        .decoration:nth-child(3) { bottom: 160px; left: 40px; }
+        .decoration:nth-child(4) { bottom: 160px; right: 40px; }
+        .decoration:nth-child(5) { bottom: 210px; left: 80px; }
+        .decoration:nth-child(6) { bottom: 210px; right: 80px; }
+
+        .cake-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            font-size: 24px;
+            text-align: center;
+            color: #d63384;
+            margin-top: 20px;
+            text-shadow: 2px 2px 0px #ffccdd;
+            animation: float 3s infinite ease-in-out;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Subjudul Styles */
+        .subjudul {
+            margin-bottom: 50px;
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .subjudul h3 {
+            color: #d63384;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .subjudul-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .subjudul-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-right: 30px;
+            margin-bottom: 20px;
+        }
+
+        .subjudul p {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        #my-words, #my-apologies {
+            background-color: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 30px auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        #my-words h2, #my-apologies h2 {
+            color: #d63384;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .audio-control {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #toggle-music {
+            padding: 10px 20px;
+            background-color: #d63384;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #opening-page h1 {
+                font-size: 1.8rem;
+            }
+            
+            #home h2 {
+                font-size: 2rem;
+            }
+            
+            .nav-item {
+                margin: 0 10px;
+                font-size: 0.9rem;
+            }
+            
+            .subjudul-content {
+                flex-direction: column;
+            }
+            
+            .subjudul-img {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .cake-container {
+                margin: 10px auto 20px auto;
+                height: 280px;
+            }
+            
+            .cake-text {
+                margin-top: 15px;
+                font-size: 20px;
+            }
+            
+            #home h2 {
+                margin-bottom: 15px;
+            }
+            
+            .cake {
+                transform: scale(0.8);
+                margin-bottom: 10px;
+            }
+            
+            .floating-hearts::before,
+            .floating-hearts::after {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="background-elements">
+        <div class="particles"></div>
+        <div class="floating-hearts"></div>
+        <div class="confetti"></div>
+        <div class="birthday-text">HBD • 18 • SYINTIA • HBD • 18 •</div>
+    </div>
+
+    <!-- Halaman pembuka dengan tombol -->
+    <div id="opening-page">
+        <h1>kalau udah siap klik tombol dibawah yaa bubb😉</h1>
+        <button id="start-button">gass yaa bubb😆</button>
+    </div>
+
+    <!-- Navbar fixed di atas -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="nav-item" data-target="home">Home</div>
+            <div class="nav-item" data-target="syinn">Syinn</div>
+            <div class="nav-item" data-target="my-words">My Words</div>
+            <div class="nav-item" data-target="my-apologies">My Apologies</div>
+        </div>
+    </nav>
+
+    <!-- Konten utama website -->
+    <div id="main-content">
+        <!-- Hero section dengan foto profil dan teks -->
+        <section id="home">
+            <img src="https://github.com/royyannn/project-birthday-gf/blob/main/IMG-20240804-WA0019.jpg?raw=true" alt="Foto Syintia" class="profile-img">
+            <h2>HAPPY 18th BIRTHDAY SYINTIA</h2>
+            
+            <div class="cake-container">
+                <div class="cake">
+                    <div class="cake-base"></div>
+                    <div class="cake-middle"></div>
+                    <div class="cake-top"></div>
+                    <div class="candle"></div>
+                    <div class="flame"></div>
+                    <div class="decoration"></div>
+                    <div class="decoration"></div>
+                    <div class="decoration"></div>
+                    <div class="decoration"></div>
+                    <div class="decoration"></div>
+                    <div class="decoration"></div>
+                </div>
+                <div class="cake-text">cihuuyy 18 niihh!! HBD yaa bubb🥳</div>
+            </div>
+            
+            <!-- Tombol toggle musik -->
+            <div class="audio-control">
+                <button id="toggle-music">🔇 Musik OFF</button>
+            </div>
+        </section>
+
+        <!-- Bagian Syinn dengan 10 subjudul -->
+        <section id="syinn">
+            <h2 style="text-align: center; color: #d63384; margin-bottom: 40px;">Syinn</h2>
+            
+            
+            <div class="subjudul">
+                <h3>Kecantikanmu</h3>
+                <div class="subjudul-content">
+                    <img src="https://raw.githubusercontent.com/royyannn/project-birthday-gf/f225204b508e2743a716accd9abf5e5e9d6a236c/syintia_cantik.jpg" alt="Gambar 1" class="subjudul-img">
+                    <p>kamu sadar ga bub kalau kamu itu cantik banget, malahan kata "cantik banget" itu belum bisa ngewakilin seluruh kecantikan kamu.
+                     kecantikan kamu tuh bagaikan langit cerah di malam hari yang selalu bikin aku betah memandanginya bubb,
+                     dan juga kecantikan kamu tidak sekedar dari wajah kamu saja, tapi juga dari sikap sama sifat kamu, itu juga yang buat aku betah sama kamu.</p>
+                </div>
+            </div>
+            
+            
+            <div class="subjudul">
+                <h3>senyumanmu yang manis</h3>
+                <div class="subjudul-content">
+                    <img src="https://github.com/royyannn/project-birthday-gf/blob/main/IMG-20240310-WA0036.jpg?raw=true" alt="Gambar 2" class="subjudul-img">
+                    <p>andai manis bisa berbentuk, ia pasti menjelma dalam senyummu. 
+                        kamu punya seyuman paling manis di dunia bub, seriusan dah kalau ada world record buat senyuman paling manis kamu pasti jadi pemenangnya,
+                        liat senyum kamu ngasih aku kekuatan, aku bakal mempertahanin senyuman kamu sebisa mungkin.</p>
+                </div>
+            </div>
+
+
+            <div class="subjudul">
+                <h3>sifatmu yang lucu & menggemaskan</h3>
+                <div class="subjudul-content">
+                    <img src="https://github.com/royyannn/project-birthday-gf/blob/main/IMG_20240505_103350_848.jpg?raw=true" alt="Gambar 2" class="subjudul-img">
+                    <p>kayanya kata lucu sama menggemaskan tuh gabisa lepas dari kamu deh, atau mungkin justru lucu sama menggemaskan tuh kamu yaa? soalnya kamu tuh 
+                        lucuu sama gemesin bangett, aku suka banget sama sifat & tingkah laku kamuu, soalnya lucu dan sangat sangat menggemaskan 🤏aku jadi suka mikir 
+                        kok bisa ya aku punya pacar selucu dan semenggemaskan kamuu🫵, tiap liat wajah dan tingkah lucu kamu, aku tuh seneng bangett, bahkan yaa 
+                        tiap aku perhatiin kamu itu bisa bikin aku senyum senyum sendiri.</p>
+                </div>
+            </div>
+
+
+            <div class="subjudul">
+                <h3>hati kamu yang penuh kasih Sayang</h3>
+                <div class="subjudul-content">
+                    <img src="https://github.com/royyannn/project-birthday-gf/blob/main/IMG-20240612-WA0005.jpg?raw=true" alt="Gambar 2" class="subjudul-img">
+                    <p>aku kagum banget sama kamu bubb, soalnya kamu tuh ngasih aura positif, vibes kamu tuh positif banget, kamu juga punya rasa kasih sayang 
+                        yang luar biasa, kaya sayang kamu ke aku itumah udah gausah dijelasin lah yaa, terus rasa sayang kamu ke semua keluarga kamu, kaya 
+                        setiap abis maghrib kalau kamu ada di rumah, kamu ngajarin si nai ngaji, terus gimana kamu ngasuh si aiman sama aiza, pas kamu punya 
+                        kucing juga kamu sayang banget, apalagi si jino tuuh, dan tentu aja mamah sama bapak kamu, itu juga gausah dijelasin lah yaa, soalnya itumah 
+                        udah jelas banget, kaya pas bapak kamu lakalantas aja kamu sampe sedih bangett, pokoknya hati kamu tuh penuh rasa kasih sayang. 
+                        inget ini yaa bubb, orang orang yang kamu sayang juga sayang bangett sama kamuu🫵 so, kamu jangan pernah ngerasa bahwa kamu sendirian,
+                        kalau kamu ada masalah jangan ragu ragu buat cerita sama aku, aku bakal dengerin kamu sampe kamu bosen cerita sama aku, aku juga bakal bantu kamu sebisa mungkin. 
+                    kalau pun kamu gamau cerita sama aku, kamu bisa cerita ke mamah, bapak, atau sahabat kamu, jangan pernah kamu ngerasa bahwa kamu sendirian.</p>  
+                </div>
+            </div>
+
+
+            <div class="subjudul">
+                <h3>marahmu yang tidak ingin aku picu</h3>
+                <div class="subjudul-content">
+                    <img src="https://github.com/royyannn/project-birthday-gf/blob/main/IMG-20230703-WA0019.jpg?raw=true" alt="Gambar 2" class="subjudul-img">
+                    <p>kalau kamu marah tuh serem bubb aslii, apalagi kalau sampai kamu ngediemin aku, serem banget asli ngalahin seremnya hantuu. jadi aku bener-bener 
+                        gamau mancing amarah kamu😬.</p>
+                </div>
+            </div>
+
+
+            <div class="subjudul">
+                <h3>sabarmu menghadapi sifat & sikapku</h3>
+                <div class="subjudul-content">
+                    <img src="https://github.com/royyannn/project-birthday-gf/blob/main/IMG-20250904-WA0117.jpg?raw=true" alt="Gambar 2" class="subjudul-img">
+                    <p>makasih yaa bub kamu udah sabar selama ini sama sifat dan sikap aku, mungkin sikap dan sifat aku kadang buat kamu jengkel, tapi kamu tetep bertahan 
+                        sama akuu, love youu bubb, happy birthday yaa cantiknya aku, sayangnya akuu💐💐💐.</p>
+                </div>
+            </div>
+            
+            
+            
+        </section>
+
+        <!-- Bagian My Words dengan teks panjang -->
+        <section id="my-words">
+            <h2>Happy 18th Birthday cilookk🎉🎉</h2>
+            <p>Ekhem udah 18 tahun ajanihh, selamat ulang tahun yang ke 18 yaa bubb, semoga di tahun ini apa yang kamu semogakan tersemogakan😆, aku harap kamu 
+                jadi lebih baik lagi dari tahun tahun sebelumnya, aku juga harap kamu makin sukses, makin bahagia, makin sehat. Dan yang terpenting, kamu harus 
+                lebih sayang diri kamu sendiri, kamu harus bisa jaga diri kamu sendiri, jangan sampe kamu dimanfaatin atau disakitin sama orang lain soalnya 
+                aku ga mau kamu nangis, aku ga mau kamu sedih, soalnya kalau sampe ada apa-apa sama kamu, aku gabisa ngapa ngapain selain berharap dan berdoa. 
+                Jangan lupa sampein ucapan terimakasih aku ke mamah sama bapak kamu yaa, soalnya karena mereka kamu lahir, aku gabisa ngebayangin gimana jadinya 
+                aku yang sekarang tanpa kamu, pokoknya makasih yaa bub udah lahir di dunia ini, makasih juga udah jadi pacar aku, aku bahagia banget bisa punya 
+                pacar secantik dan selucu kamuu🫵. Pokoknya kamu bahagia selalu yaa, HAPPY BIRTHDAY SYINTIA, HAPPY BIRTHDAY SAYANGKUU🥳🥳🎉🎉🎉🎉
+            </p>
+        </section>
+
+        <!-- Bagian My Apologies dengan teks permintaan maaf -->
+        <section id="my-apologies">
+            <h2>Maaf yaaa  bubb</h2>
+            <p>Di hari yang sangat spesial ini aku gaada di samping kamu, aku juga belum bisa ngasih kamu kado, akuteh pengen ngasih kamu kado, cuma aku gatau alamat 
+                kosan kamuu, kalau aku nanya kamu juga aku ragu kamu bakal ngasih tau, yakann??. Jadi maaf yaa bubb, di hari yang spesial ini aku ga ngasih kado, 
+                kadonya nyusul aja yaa, maaf juga aku gabisa ngerayain hari spesial ini sama kamu secara langsung, aku pengen banget ngerayain hari ini sama kamuu, 
+                cuma ya mau gimana lagi, kita terpisah sama jarak, tapi di hari ini kamu harus bahagia bubb😉
+                HAPPY BIRTHDAY BUBB🥳.</p>
+        </section>
+    </div>
+
+    <!-- Elemen audio untuk memutar lagu -->
+    <audio id="birthday-song" loop>
+    <source src="https://cdn.jsdelivr.net/gh/royyannn/project-birthday-gf@main/justthewayyouare_cover.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+    // Mengambil elemen-elemen penting dari DOM
+    const openingPage = document.getElementById('opening-page');
+    const startButton = document.getElementById('start-button');
+    const navbar = document.getElementById('navbar');
+    const mainContent = document.getElementById('main-content');
+    const audio = document.getElementById('birthday-song');
+    const navItems = document.querySelectorAll('.nav-item');
+    const toggleBtn = document.getElementById('toggle-music');
+    const audioControl = document.querySelector('.audio-control');
+
+    // Variabel status musik
+    let isMusicPlaying = false;
+    let audioError = false;
+
+    // Fungsi untuk membuat tombol play manual
+    function createManualPlayButton() {
+        const manualPlayBtn = document.createElement('button');
+        manualPlayBtn.textContent = '🎵 Klik untuk Memutar Musik';
+        manualPlayBtn.style.padding = '10px 20px';
+        manualPlayBtn.style.background = '#d63384';
+        manualPlayBtn.style.color = 'white';
+        manualPlayBtn.style.border = 'none';
+        manualPlayBtn.style.borderRadius = '5px';
+        manualPlayBtn.style.marginTop = '10px';
+        manualPlayBtn.style.cursor = 'pointer';
+        
+        manualPlayBtn.onclick = () => {
+            audio.play().then(() => {
+                isMusicPlaying = true;
+                toggleBtn.textContent = "🔊 Musik ON";
+                manualPlayBtn.remove();
+            }).catch(e => {
+                console.log('Masih error:', e);
+                alert('Maaf, musik tidak dapat diputar. Pastikan file audio tersedia.');
+            });
+        };
+        
+        audioControl.appendChild(manualPlayBtn);
+    }
+
+    // Fungsi untuk toggle musik (play/pause)
+    function toggleMusic() {
+        if (audioError) {
+            alert('File audio tidak dapat diakses. Silakan coba lagi nanti.');
+            return;
+        }
+
+        if (isMusicPlaying) {
+            audio.pause();
+            toggleBtn.textContent = "🔇 Musik OFF";
+        } else {
+            audio.play().catch(error => {
+                console.log('Play error: ', error);
+                audioError = true;
+                toggleBtn.textContent = "❌ Error";
+                createManualPlayButton();
+            });
+            toggleBtn.textContent = "🔊 Musik ON";
+        }
+        isMusicPlaying = !isMusicPlaying;
+    }
+
+    // Event listener untuk tombol toggle
+    toggleBtn.addEventListener('click', toggleMusic);
+
+    // Pastikan audio looping
+    audio.loop = true;
+
+    // Fungsi untuk memulai website setelah tombol diklik
+    function startWebsite() {
+        // Menghilangkan halaman pembuka dengan efek fade out
+        openingPage.style.opacity = '0';
+        
+        // Menunda penampilan konten utama dan navbar sampai animasi selesai
+        setTimeout(() => {
+            openingPage.style.display = 'none';
+            navbar.style.display = 'block';
+            mainContent.style.display = 'block';
+            
+            // Memulai musik dan update status
+            audio.play().catch(error => {
+                console.log('Autoplay error: ', error);
+                audioError = true;
+                toggleBtn.textContent = "❌ Error";
+                createManualPlayButton();
+            });
+            isMusicPlaying = true;
+            toggleBtn.textContent = "🔊 Musik ON";
+        }, 1000);
+    }
+
+    // Menambahkan event listener ke tombol start
+    startButton.addEventListener('click', startWebsite);
+
+    // Fungsi untuk scroll ke bagian yang sesuai ketika item navbar diklik
+    function scrollToSection(event) {
+        const targetId = event.target.getAttribute('data-target');
+        const targetSection = document.getElementById(targetId);
+        
+        if (targetSection) {
+            window.scrollTo({
+                top: targetSection.offsetTop - 70, // Mengkompensasi navbar fixed
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    // Menambahkan event listener ke setiap item navbar
+    navItems.forEach(item => {
+        item.addEventListener('click', scrollToSection);
+    });
+
+    // Preload audio untuk cek error lebih awal
+    audio.addEventListener('error', function() {
+        console.log('Audio loading error');
+        audioError = true;
+        toggleBtn.textContent = "❌ Error";
+        createManualPlayButton();
+    });
+</script>
+</body>
+</html>
